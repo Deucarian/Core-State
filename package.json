@@ -1,0 +1,16 @@
+{
+  "name": "com.jorishoef.core.state",
+  "version": "0.1.0",
+  "displayName": "JorisHoef Core State",
+  "description": "Small, standalone repository and selection services for Unity projects.",
+  "unity": "2021.3",
+  "keywords": [
+    "state",
+    "repository",
+    "selection"
+  ],
+  "author": {
+    "name": "JorisHoef"
+  },
+  "dependencies": {}
+}

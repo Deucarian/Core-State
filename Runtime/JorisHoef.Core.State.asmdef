@@ -1,0 +1,14 @@
+{
+  "name": "JorisHoef.Core.State",
+  "rootNamespace": "JorisHoef.Core.State",
+  "references": [],
+  "includePlatforms": [],
+  "excludePlatforms": [],
+  "allowUnsafeCode": false,
+  "overrideReferences": false,
+  "precompiledReferences": [],
+  "autoReferenced": true,
+  "defineConstraints": [],
+  "versionDefines": [],
+  "noEngineReferences": true
+}
