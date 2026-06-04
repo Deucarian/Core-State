@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using NUnit.Framework;
 
@@ -33,6 +34,32 @@ namespace JorisHoef.Core.State.Tests
         }
 
         [Test]
+        public void ConstructorThrowsWhenRepositoryIsNull()
+        {
+            Assert.Throws<ArgumentNullException>(() => new SelectionService<string, TestItem>(null));
+        }
+
+        [Test]
+        public void SelectMissingKeyThrows()
+        {
+            var repository = new Repository<string, TestItem>();
+            var selection = new SelectionService<string, TestItem>(repository);
+
+            Assert.Throws<KeyNotFoundException>(() => selection.Select("missing"));
+            Assert.IsFalse(selection.HasSelection);
+        }
+
+        [Test]
+        public void TrySelectMissingKeyReturnsFalse()
+        {
+            var repository = new Repository<string, TestItem>();
+            var selection = new SelectionService<string, TestItem>(repository);
+
+            Assert.IsFalse(selection.TrySelect("missing"));
+            Assert.IsFalse(selection.HasSelection);
+        }
+
+        [Test]
         public void SelectionClearsWhenSelectedItemIsRemoved()
         {
             var repository = new Repository<string, TestItem>();
@@ -58,6 +85,29 @@ namespace JorisHoef.Core.State.Tests
         }
 
         [Test]
+        public void SelectionDoesNotClearWhenNonSelectedItemIsRemoved()
+        {
+            var repository = new Repository<string, TestItem>();
+            var selected = new TestItem("one", "First");
+            var other = new TestItem("two", "Second");
+            repository.AddOrUpdate(selected);
+            repository.AddOrUpdate(other);
+
+            var selection = new SelectionService<string, TestItem>(repository);
+            selection.Select("one");
+
+            var events = new List<SelectionChangedEventArgs<string, TestItem>>();
+            selection.SelectionChanged += (_, args) => events.Add(args);
+
+            repository.Remove("two");
+
+            Assert.IsTrue(selection.HasSelection);
+            Assert.AreEqual("one", selection.SelectedKey);
+            Assert.AreSame(selected, selection.SelectedItem);
+            Assert.AreEqual(0, events.Count);
+        }
+
+        [Test]
         public void SelectionClearsWhenRepositoryIsCleared()
         {
             var repository = new Repository<string, TestItem>();
@@ -67,6 +117,22 @@ namespace JorisHoef.Core.State.Tests
             selection.Select("one");
 
             repository.Clear();
+
+            Assert.IsFalse(selection.HasSelection);
+            Assert.IsNull(selection.SelectedItem);
+        }
+
+        [Test]
+        public void SelectionClearOnRemoveUsesRemovedKeyNotRepositoryState()
+        {
+            var repository = new EventTimingRepository();
+            var item = new TestItem("one", "First");
+            repository.Add(item);
+
+            var selection = new SelectionService<string, TestItem>(repository);
+            selection.Select("one");
+
+            repository.RaiseItemRemovedBeforeRemovingFromStorage("one");
 
             Assert.IsFalse(selection.HasSelection);
             Assert.IsNull(selection.SelectedItem);
@@ -126,6 +192,47 @@ namespace JorisHoef.Core.State.Tests
 
             public string Id { get; }
             public string Name { get; }
+        }
+
+        private sealed class EventTimingRepository : IReadOnlyRepository<string, TestItem>
+        {
+            private readonly Dictionary<string, TestItem> _items = new Dictionary<string, TestItem>();
+
+            public event Action<string, TestItem> ItemAdded;
+            public event Action<string, TestItem> ItemUpdated;
+            public event Action<string, TestItem> ItemRemoved;
+            public event Action Cleared;
+
+            public int Count
+            {
+                get { return _items.Count; }
+            }
+
+            public IReadOnlyCollection<TestItem> Items
+            {
+                get { return _items.Values; }
+            }
+
+            public void Add(TestItem item)
+            {
+                _items[item.Id] = item;
+                ItemAdded?.Invoke(item.Id, item);
+            }
+
+            public void RaiseItemRemovedBeforeRemovingFromStorage(string key)
+            {
+                ItemRemoved?.Invoke(key, _items[key]);
+            }
+
+            public bool ContainsKey(string key)
+            {
+                return _items.ContainsKey(key);
+            }
+
+            public bool TryGet(string key, out TestItem item)
+            {
+                return _items.TryGetValue(key, out item);
+            }
         }
     }
 }

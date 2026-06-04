@@ -99,7 +99,7 @@ namespace JorisHoef.Core.State
 
         private void OnRepositoryItemRemoved(TKey key, T item)
         {
-            if (!_hasSelection || _repository.ContainsKey(_selectedKey))
+            if (!_hasSelection || !EqualityComparer<TKey>.Default.Equals(_selectedKey, key))
             {
                 return;
             }
