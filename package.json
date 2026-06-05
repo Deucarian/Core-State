@@ -12,5 +12,12 @@
   "author": {
     "name": "JorisHoef"
   },
-  "dependencies": {}
+  "dependencies": {},
+  "samples": [
+    {
+      "displayName": "Standalone Repository Selection",
+      "description": "Simple IMGUI scene showing repository-backed key selection without any UI package dependency.",
+      "path": "Samples~/StandaloneRepositorySelection"
+    }
+  ]
 }
