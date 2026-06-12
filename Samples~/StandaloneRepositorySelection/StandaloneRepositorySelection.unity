@@ -130,8 +130,8 @@ MonoScript:
   m_Type: 0
   m_ExecutionOrder: 0
   m_ClassName: CoreStateStandaloneSample
-  m_Namespace: JorisHoef.Core.State.Samples.StandaloneRepositorySelection
-  m_AssemblyName: JorisHoef.Core.State.Samples.StandaloneRepositorySelection
+  m_Namespace: Deucarian.CoreState.Samples.StandaloneRepositorySelection
+  m_AssemblyName: Deucarian.CoreState.Samples.StandaloneRepositorySelection
 --- !u!1 &1200000000
 GameObject:
   m_ObjectHideFlags: 0
@@ -175,7 +175,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 1538462600}
   m_Name:
-  m_EditorClassIdentifier: JorisHoef.Core.State.Samples.StandaloneRepositorySelection::JorisHoef.Core.State.Samples.StandaloneRepositorySelection.CoreStateStandaloneSample
+  m_EditorClassIdentifier: Deucarian.CoreState.Samples.StandaloneRepositorySelection::Deucarian.CoreState.Samples.StandaloneRepositorySelection.CoreStateStandaloneSample
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

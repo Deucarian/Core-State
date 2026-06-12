@@ -1,10 +1,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using JorisHoef.Core.State;
+using Deucarian.CoreState;
 using UnityEngine;
 
-namespace JorisHoef.Core.State.Samples.StandaloneRepositorySelection
+namespace Deucarian.CoreState.Samples.StandaloneRepositorySelection
 {
     public sealed class CoreStateStandaloneSample : MonoBehaviour
     {

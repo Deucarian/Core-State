@@ -1,6 +1,6 @@
-using JorisHoef.Core.State;
+using Deucarian.CoreState;
 
-namespace JorisHoef.Core.State.Samples.StandaloneRepositorySelection
+namespace Deucarian.CoreState.Samples.StandaloneRepositorySelection
 {
     public sealed class FakeProjectData : IIdentifiable<int>
     {

@@ -1,4 +1,4 @@
-# JorisHoef Core State
+# Deucarian Core State
 
 ## Overview
 
@@ -6,7 +6,7 @@ Core State is a small, standalone runtime package for keeping keyed data and cur
 
 It provides repository and selection primitives that can be reused by Unity packages, tools, or game code without taking dependencies on UI, networking, sessions, service locators, scenes, `GameObject`, `MonoBehaviour`, or `UnityEngine`.
 
-Package ID: `com.jorishoef.core.state`
+Package ID: `com.deucarian.core-state`
 
 ## Installation
 
@@ -15,7 +15,7 @@ Install the package through Unity Package Manager with a Git URL:
 ```json
 {
   "dependencies": {
-    "com.jorishoef.core.state": "https://github.com/JorisHoef/Core-State.git#main"
+    "com.deucarian.core-state": "https://github.com/Deucarian/Core-State.git#main"
   }
 }
 ```
@@ -23,7 +23,7 @@ Install the package through Unity Package Manager with a Git URL:
 For development builds, use:
 
 ```json
-"com.jorishoef.core.state": "https://github.com/JorisHoef/Core-State.git#develop"
+"com.deucarian.core-state": "https://github.com/Deucarian/Core-State.git#develop"
 ```
 
 The package requires Unity `2021.3` or newer and has no package dependencies.
@@ -50,7 +50,7 @@ Repository replacement is key based. Updating an item with the same key keeps th
 Basic repository and selection workflow:
 
 ```csharp
-using JorisHoef.Core.State;
+using Deucarian.CoreState;
 
 public sealed class ProjectData : IIdentifiable<string>
 {
@@ -116,11 +116,11 @@ Open the scene and enter Play Mode. The sample creates fake project data, select
 
 ## Integrations
 
-Core State has no integration assembly and does not reference the other JorisHoef packages.
+Core State has no integration assembly and does not reference the other Deucarian packages.
 
-It is intended to be composed by consumers. For example, project code can store data in `Repository<TKey, T>` and render it with Generic UI Items, but that composition is not built into this package.
+It is intended to be composed by consumers. For example, project code can store data in `Repository<TKey, T>` and render it with UI Binding, but that composition is not built into this package.
 
-The Package Installer can install Core State alongside Generic UI Items, but Core State itself remains standalone.
+The Package Installer can install Core State alongside UI Binding, but Core State itself remains standalone.
 
 ## Versioning
 

@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace JorisHoef.Core.State
+namespace Deucarian.CoreState
 {
     public sealed class Repository<TKey, T> : IRepository<TKey, T>
         where T : IIdentifiable<TKey>

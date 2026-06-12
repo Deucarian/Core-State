@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace JorisHoef.Core.State
+namespace Deucarian.CoreState
 {
     public sealed class SelectionService<TKey, T> : ISelectionService<TKey, T>
     {

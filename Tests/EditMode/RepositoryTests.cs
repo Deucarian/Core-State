@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using NUnit.Framework;
 
-namespace JorisHoef.Core.State.Tests
+namespace Deucarian.CoreState.Tests
 {
     public sealed class RepositoryTests
     {

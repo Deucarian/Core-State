@@ -1,6 +1,6 @@
 {
-  "name": "JorisHoef.Core.State",
-  "rootNamespace": "JorisHoef.Core.State",
+  "name": "Deucarian.CoreState",
+  "rootNamespace": "Deucarian.CoreState",
   "references": [],
   "includePlatforms": [],
   "excludePlatforms": [],

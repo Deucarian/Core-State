@@ -1,6 +1,6 @@
 using System;
 
-namespace JorisHoef.Core.State
+namespace Deucarian.CoreState
 {
     public interface ISelectionService<TKey, T>
     {

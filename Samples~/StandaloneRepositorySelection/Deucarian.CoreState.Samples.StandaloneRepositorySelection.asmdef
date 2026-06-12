@@ -1,8 +1,8 @@
 {
-  "name": "JorisHoef.Core.State.Samples.StandaloneRepositorySelection",
-  "rootNamespace": "JorisHoef.Core.State.Samples.StandaloneRepositorySelection",
+  "name": "Deucarian.CoreState.Samples.StandaloneRepositorySelection",
+  "rootNamespace": "Deucarian.CoreState.Samples.StandaloneRepositorySelection",
   "references": [
-    "JorisHoef.Core.State"
+    "Deucarian.CoreState"
   ],
   "includePlatforms": [],
   "excludePlatforms": [],

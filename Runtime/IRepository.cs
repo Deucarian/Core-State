@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace JorisHoef.Core.State
+namespace Deucarian.CoreState
 {
     public interface IRepository<TKey, T> : IReadOnlyRepository<TKey, T>
         where T : IIdentifiable<TKey>

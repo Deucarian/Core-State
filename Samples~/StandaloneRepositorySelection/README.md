@@ -1,6 +1,6 @@
 # Standalone Repository Selection
 
-This sample demonstrates CoreState without GenericUIItems, APIHelper, ServiceLocator, or project-specific code.
+This sample demonstrates CoreState without UIBinding, API, ServiceLocator, or project-specific code.
 
 Open `StandaloneRepositorySelection.unity` and enter Play Mode. The sample uses IMGUI buttons to:
 

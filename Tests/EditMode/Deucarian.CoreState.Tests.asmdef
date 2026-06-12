@@ -1,8 +1,8 @@
 {
-  "name": "JorisHoef.Core.State.Tests",
-  "rootNamespace": "JorisHoef.Core.State.Tests",
+  "name": "Deucarian.CoreState.Tests",
+  "rootNamespace": "Deucarian.CoreState.Tests",
   "references": [
-    "JorisHoef.Core.State"
+    "Deucarian.CoreState"
   ],
   "includePlatforms": [
     "Editor"

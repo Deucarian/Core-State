@@ -1,6 +1,6 @@
 using System;
 
-namespace JorisHoef.Core.State
+namespace Deucarian.CoreState
 {
     public sealed class SelectionChangedEventArgs<TKey, T> : EventArgs
     {

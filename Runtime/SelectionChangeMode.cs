@@ -1,4 +1,4 @@
-namespace JorisHoef.Core.State
+namespace Deucarian.CoreState
 {
     public enum SelectionChangeMode
     {
