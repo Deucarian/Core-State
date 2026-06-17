@@ -1,0 +1,1 @@
+﻿stable publish trigger for com.deucarian.core-state at 2026-06-16T11:33:17.4071469+02:00
