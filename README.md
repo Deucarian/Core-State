@@ -124,7 +124,7 @@ The Package Installer can install Core State alongside UI Binding, but Core Stat
 
 ## Versioning
 
-Current package version: `1.0.0`.
+Current package version: `1.0.1`.
 
 Branch strategy:
 
