@@ -139,3 +139,9 @@ Use branch refs for active development and stable release tags when tags are ava
 - Selection is single-item selection by key, not multi-select.
 - The package does not include UI bindings, serialization, networking, undo/redo, or thread-safety primitives.
 - Null keys are rejected by repository operations; `TrySelect` returns `false` for null keys.
+
+## Architecture / Contributor Notes
+
+- [AGENTS.md](AGENTS.md) contains repository-specific ownership and Codex guidance.
+- Deucarian architecture rules live in [Package Registry](https://github.com/Deucarian/Package-Registry/blob/develop/ARCHITECTURE.md).
+- Capability ownership is tracked in [CAPABILITY_OWNERSHIP.md](https://github.com/Deucarian/Package-Registry/blob/develop/CAPABILITY_OWNERSHIP.md).
