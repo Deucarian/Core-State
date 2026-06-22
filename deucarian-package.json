@@ -1,0 +1,22 @@
+{
+  "packageId": "com.deucarian.core-state",
+  "displayName": "Deucarian Core State",
+  "ownedCapabilities": [
+    "repository-state"
+  ],
+  "runtimeAssemblies": [
+    "Deucarian.CoreState"
+  ],
+  "editorAssemblies": [],
+  "sampleAssemblies": [
+    "Deucarian.CoreState.Samples.StandaloneRepositorySelection"
+  ],
+  "testAssemblies": [
+    "Deucarian.CoreState.Tests"
+  ],
+  "requiredDependencies": [],
+  "optionalVersionDefinedDependencies": [],
+  "allowedDirectDebugCalls": [],
+  "allowedDirectUnityObjectLifetimeCalls": [],
+  "expectedSamplesRoot": "Samples~"
+}
