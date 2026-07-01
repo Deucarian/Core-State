@@ -1,34 +1,47 @@
 # Deucarian Core State
 
-## Overview
+## What this is
 
-Core State is a small, standalone runtime package for keeping keyed data and current selection state in plain C#.
+`com.deucarian.core-state` is a small, standalone runtime package for keeping keyed data and current selection state in plain C#.
 
 It provides repository and selection primitives that can be reused by Unity packages, tools, or game code without taking dependencies on UI, networking, sessions, service locators, scenes, `GameObject`, `MonoBehaviour`, or `UnityEngine`.
 
-Package ID: `com.deucarian.core-state`
+Current package version: `1.0.1`.
 
-## Installation
+## When to use it
 
-Install the package through Unity Package Manager with a Git URL:
+- You need a plain C# keyed repository for runtime data.
+- You need a single-selection service that stays valid as repository data changes.
+- You need reusable repository/selection contracts without UI, networking, scenes, or service locators.
+- You want another package to compose Core State rather than owning duplicate selection primitives.
+
+## When not to use it
+
+- Do not use Core State for UI binding, world selection, persistence, networking, undo/redo, or domain-specific state.
+- Do not add Logging, Common, Editor, Diagnostics, or runtime Unity object dependencies unless governance approves a direct need.
+- Do not use Core State as a service locator or project-wide architecture framework.
+
+## Install
+
+Stable:
 
 ```json
-{
-  "dependencies": {
-    "com.deucarian.core-state": "https://github.com/Deucarian/Core-State.git#main"
-  }
-}
+"com.deucarian.core-state": "https://github.com/Deucarian/Core-State.git#main"
 ```
 
-For development builds, use:
+Development:
 
 ```json
 "com.deucarian.core-state": "https://github.com/Deucarian/Core-State.git#develop"
 ```
 
-The package requires Unity `2021.3` or newer and has no package dependencies.
+Core State has no package dependencies.
 
-## Core Concepts
+## Unity compatibility
+
+Requires Unity 2021.3 or newer.
+
+## 60-second quick start
 
 `Repository<TKey, T>` stores items by key. The item type must implement `IIdentifiable<TKey>` so the repository can read each item's stable `Id`.
 
@@ -36,7 +49,7 @@ The package requires Unity `2021.3` or newer and has no package dependencies.
 
 Repository replacement is key based. Updating an item with the same key keeps the selection valid.
 
-## Public API
+## Public API map
 
 - `IIdentifiable<TKey>`: item contract containing `Id`.
 - `IReadOnlyRepository<TKey, T>`: read-only repository view with count, items, lookup methods, and change events.
@@ -122,17 +135,6 @@ It is intended to be composed by consumers. For example, project code can store 
 
 The Package Installer can install Core State alongside UI Binding, but Core State itself remains standalone.
 
-## Versioning
-
-Current package version: `1.0.1`.
-
-Branch strategy:
-
-- `main`: stable package branch.
-- `develop`: development package branch.
-
-Use branch refs for active development and stable release tags when tags are available.
-
 ## Limitations
 
 - Repository storage is in memory only. Persistence belongs in application code or another package.
@@ -140,8 +142,34 @@ Use branch refs for active development and stable release tags when tags are ava
 - The package does not include UI bindings, serialization, networking, undo/redo, or thread-safety primitives.
 - Null keys are rejected by repository operations; `TrySelect` returns `false` for null keys.
 
+## Troubleshooting
+
+- If selection clears unexpectedly, check whether the selected key was removed or the repository was cleared.
+- If `TrySelect` returns `false`, confirm the key is non-null and currently exists in the repository.
+- If a package needs UI, persistence, networking, or world-object selection, compose Core State from that owning package instead of adding those concerns here.
+
+## Validation
+
+Run the shared package validator from the repository root:
+
+```powershell
+python C:/Repositories/Package-Registry/Tools/deucarian_package_validator.py --registry-root C:/Repositories/Package-Registry --repository-root . --config deucarian-package.json
+```
+
+Run the package's EditMode tests in Unity after code or assembly definition changes.
+
+Documentation-only updates should still pass:
+
+```powershell
+git diff --check
+```
+
 ## Architecture / Contributor Notes
 
 - [AGENTS.md](AGENTS.md) contains repository-specific ownership and Codex guidance.
 - Deucarian architecture rules live in [Package Registry](https://github.com/Deucarian/Package-Registry/blob/develop/ARCHITECTURE.md).
 - Capability ownership is tracked in [CAPABILITY_OWNERSHIP.md](https://github.com/Deucarian/Package-Registry/blob/develop/CAPABILITY_OWNERSHIP.md).
+
+## License
+
+See [LICENSE.md](LICENSE.md).
