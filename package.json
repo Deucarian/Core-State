@@ -3,6 +3,7 @@
   "version": "1.0.1",
   "displayName": "Deucarian Core State",
   "description": "Small, standalone repository and selection services for Unity projects.",
+  "license": "MIT",
   "unity": "2021.3",
   "keywords": [
     "state",
