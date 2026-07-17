@@ -1,6 +1,7 @@
 {
   "packageId": "com.deucarian.core-state",
   "displayName": "Deucarian Core State",
+  "samplePolicy": "playable-scene",
   "ownedCapabilities": [
     "repository-state"
   ],
