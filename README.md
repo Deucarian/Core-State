@@ -6,7 +6,7 @@
 
 It provides repository and selection primitives that can be reused by Unity packages, tools, or game code without taking dependencies on UI, networking, sessions, service locators, scenes, `GameObject`, `MonoBehaviour`, or `UnityEngine`.
 
-Current package version: `1.0.1`.
+Current package version: `1.0.2`.
 
 ## When to use it
 
