@@ -182,6 +182,22 @@ namespace Deucarian.CoreState.Tests
             Assert.AreSame(replacement, selection.SelectedItem);
         }
 
+        [Test]
+        public void DisposeStopsRepositoryObservationAndRejectsCommands()
+        {
+            var repository = new Repository<string, TestItem>();
+            repository.AddOrUpdate(new TestItem("one", "First"));
+            var selection = new SelectionService<string, TestItem>(repository);
+            selection.Select("one");
+
+            selection.Dispose();
+            repository.Remove("one");
+
+            Assert.IsTrue(selection.HasSelection);
+            Assert.Throws<ObjectDisposedException>(() => selection.Clear());
+            Assert.Throws<ObjectDisposedException>(() => selection.TrySelect("one"));
+        }
+
         private sealed class TestItem : IIdentifiable<string>
         {
             public TestItem(string id, string name)
