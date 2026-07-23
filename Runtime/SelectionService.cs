@@ -3,11 +3,12 @@ using System.Collections.Generic;
 
 namespace Deucarian.CoreState
 {
-    public sealed class SelectionService<TKey, T> : ISelectionService<TKey, T>
+    public sealed class SelectionService<TKey, T> : ISelectionService<TKey, T>, IDisposable
     {
         private readonly IReadOnlyRepository<TKey, T> _repository;
         private bool _hasSelection;
         private TKey _selectedKey;
+        private bool _isDisposed;
 
         public SelectionService(IReadOnlyRepository<TKey, T> repository)
         {
@@ -49,6 +50,7 @@ namespace Deucarian.CoreState
 
         public void Select(TKey key, SelectionChangeMode mode = SelectionChangeMode.Manual)
         {
+            ThrowIfDisposed();
             if (!TrySelect(key, mode))
             {
                 throw new KeyNotFoundException("The selected key does not exist in the repository.");
@@ -57,6 +59,7 @@ namespace Deucarian.CoreState
 
         public bool TrySelect(TKey key, SelectionChangeMode mode = SelectionChangeMode.Manual)
         {
+            ThrowIfDisposed();
             if (ReferenceEquals(key, null))
             {
                 return false;
@@ -94,11 +97,29 @@ namespace Deucarian.CoreState
 
         public void Clear(SelectionChangeMode mode = SelectionChangeMode.Manual)
         {
+            ThrowIfDisposed();
             ClearInternal(mode, SelectedItem);
+        }
+
+        public void Dispose()
+        {
+            if (_isDisposed)
+            {
+                return;
+            }
+
+            _repository.ItemRemoved -= OnRepositoryItemRemoved;
+            _repository.Cleared -= OnRepositoryCleared;
+            _isDisposed = true;
         }
 
         private void OnRepositoryItemRemoved(TKey key, T item)
         {
+            if (_isDisposed)
+            {
+                return;
+            }
+
             if (!_hasSelection || !EqualityComparer<TKey>.Default.Equals(_selectedKey, key))
             {
                 return;
@@ -109,6 +130,11 @@ namespace Deucarian.CoreState
 
         private void OnRepositoryCleared()
         {
+            if (_isDisposed)
+            {
+                return;
+            }
+
             Clear(SelectionChangeMode.RepositoryChanged);
         }
 
@@ -153,6 +179,14 @@ namespace Deucarian.CoreState
                     selectedKey,
                     selectedItem,
                     mode));
+        }
+
+        private void ThrowIfDisposed()
+        {
+            if (_isDisposed)
+            {
+                throw new ObjectDisposedException(GetType().Name);
+            }
         }
     }
 }
