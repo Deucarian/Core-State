@@ -1,6 +1,6 @@
 {
   "name": "com.deucarian.core-state",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "displayName": "Deucarian Core State",
   "description": "Small, standalone repository and selection services for Unity projects.",
   "unity": "2021.3",
@@ -22,6 +22,11 @@
       "displayName": "Standalone Repository Selection",
       "description": "Simple IMGUI scene showing repository-backed key selection without any UI package dependency.",
       "path": "Samples~/StandaloneRepositorySelection"
+    },
+    {
+      "displayName": "Definition Workflow",
+      "description": "Playable scene with typed C# calls, Inspector components, editable definitions and shared host ownership.",
+      "path": "Samples~/DefinitionWorkflow"
     }
   ]
 }

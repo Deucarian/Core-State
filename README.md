@@ -1,12 +1,22 @@
 # Deucarian Core State
 
+## Typed definition workflow
+
+Repository identities belong to actual runtime items. The pure C# repository works from this component without generating global keys or content assets.
+
+Start with the [Definition Workflow walkthrough](Documentation~/DefinitionWorkflow.md).
+Import **Definition Workflow** in Package Manager for a configured sample scene
+and short caller scripts. The sample keeps typed contracts and service setup explicit, with reusable
+components for scene callers.
+
+
 ## What this is
 
 `com.deucarian.core-state` is a small, standalone runtime package for keeping keyed data and current selection state in plain C#.
 
 It provides repository and selection primitives that can be reused by Unity packages, tools, or game code without taking dependencies on UI, networking, sessions, service locators, scenes, `GameObject`, `MonoBehaviour`, or `UnityEngine`.
 
-Current package version: `1.0.2`.
+Current package version: `1.1.0`.
 
 ## When to use it
 

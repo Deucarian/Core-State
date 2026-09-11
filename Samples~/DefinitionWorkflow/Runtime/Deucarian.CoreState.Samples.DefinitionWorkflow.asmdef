@@ -1,0 +1,6 @@
+{
+  "name": "Deucarian.CoreState.Samples.DefinitionWorkflow",
+  "references": [
+    "Deucarian.CoreState"
+  ]
+}
