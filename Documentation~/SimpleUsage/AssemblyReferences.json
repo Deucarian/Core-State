@@ -1,0 +1,16 @@
+{
+  "name": "Deucarian.CoreState.Samples.SimpleUsage",
+  "rootNamespace": "Deucarian.CoreState.Samples.SimpleUsage",
+  "references": [
+    "Deucarian.CoreState"
+  ],
+  "includePlatforms": [],
+  "excludePlatforms": [],
+  "allowUnsafeCode": false,
+  "overrideReferences": false,
+  "precompiledReferences": [],
+  "autoReferenced": false,
+  "defineConstraints": [],
+  "versionDefines": [],
+  "noEngineReferences": false
+}
