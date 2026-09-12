@@ -10,6 +10,7 @@
   ],
   "editorAssemblies": [],
   "sampleAssemblies": [
+    "Deucarian.CoreState.Samples.DefinitionWorkflow",
     "Deucarian.CoreState.Samples.StandaloneRepositorySelection"
   ],
   "testAssemblies": [
