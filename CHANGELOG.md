@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.0] - 2026-09-11
+
+- Add an importable scene demonstrating scoped typed runtime handles through the existing state owner.
+- Include a playable Definition Workflow sample with configured hosts, short callers and usage documentation.
+- Align declared package dependencies with the definition-authoring development wave.
+
+
 ## 1.0.2 - 2026-07-17
 
 - Applied the coordinated portfolio governance and sample-contract metadata.
