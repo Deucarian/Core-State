@@ -17,6 +17,9 @@
     "type": "git",
     "url": "git+https://github.com/Deucarian/Core-State.git"
   },
+  "documentationUrl": "https://github.com/Deucarian/Core-State/blob/main/README.md",
+  "changelogUrl": "https://github.com/Deucarian/Core-State/blob/main/CHANGELOG.md",
+  "licensesUrl": "https://github.com/Deucarian/Core-State/blob/main/LICENSE.md",
   "dependencies": {},
   "samples": [
     {
